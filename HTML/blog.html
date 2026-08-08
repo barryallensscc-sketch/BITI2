@@ -1,0 +1,231 @@
+<!doctype html>
+<!-- Blog page: displays a grid of articles or details of a single active post. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Journal | BITI</title>
+<meta name="description" content="Stay up to date with the latest industry trends, tech tips, and stories from the Bangladesh IT Institute.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../CSS/pages.css">
+<style>
+  /* Blog list view styles */
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px 24px;
+    margin-top: 20px;
+  }
+  .blog-post-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: transform 0.25s, box-shadow 0.25s;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .blog-post-card:hover {
+    transform: translateY(-5px);
+  }
+  .blog-post-card img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    border-radius: 6px;
+  }
+  .blog-post-card .meta {
+    font: 600 11px 'DM Mono', monospace;
+    color: var(--blue);
+    margin: 16px 0 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .blog-post-card h3 {
+    font-size: 19px;
+    line-height: 1.35;
+    margin: 0 0 10px;
+    letter-spacing: -0.6px;
+    color: var(--ink);
+  }
+  .blog-post-card p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Single post details view styles */
+  .single-post {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px 0 60px;
+  }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 28px;
+    font-size: 13px;
+    color: var(--blue);
+    font-weight: 700;
+    transition: transform 0.2s;
+  }
+  .back-link:hover {
+    transform: translateX(-4px);
+  }
+  .post-meta {
+    font: 600 11px 'DM Mono', monospace;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .post-meta .category {
+    color: var(--blue);
+  }
+  .post-title {
+    font-size: clamp(28px, 4.5vw, 44px);
+    line-height: 1.15;
+    letter-spacing: -2px;
+    margin: 0 0 24px 0;
+    color: var(--ink);
+  }
+  .post-image {
+    width: 100%;
+    max-height: 420px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 32px;
+  }
+  .post-content {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #2d3e50;
+  }
+  .post-content p {
+    margin-bottom: 20px;
+  }
+
+  @media(max-width: 760px) {
+    .blog-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media(max-width: 480px) {
+    .blog-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+
+<body>
+<div class="topbar">
+<div class="container">Bangladesh IT Institute <span>info@bditinstitute.com</span>
+</div>
+
+</div>
+
+<header class="container nav">
+<a class="logo" href="../index.html">
+<img src="../IMAGES/BITI logo.png" alt="BITI">
+</a>
+<nav class="nav-links">
+<a href="courses.html">Courses</a>
+<a href="about.html">About BITI</a>
+<a href="services.html">Services</a>
+<a href="events.html">Events</a>
+<div class="dropdown">
+<button class="dropdown-toggle">More</button>
+<div class="dropdown-menu">
+<a href="team.html">Team</a>
+<a href="career.html">Career</a>
+<a href="contact-information.html">Contact Information</a>
+<a href="admissions.html">FAQ & Admissions</a>
+<a href="events.html">Upcoming Events</a>
+<a href="stories.html">Student Stories</a>
+<a href="blog.html">Blog</a>
+</div>
+
+</div>
+
+<a href="contact.html">Contact</a>
+</nav>
+
+<a class="button" href="admissions.html">Apply Now →</a>
+<button class="menu" aria-label="Open menu">☰</button>
+</header>
+
+<main>
+<section class="hero" id="blog-hero">
+<div class="container">
+<div class="eyebrow">BITI Journal</div>
+
+<h1>Ideas, insights & inspiration.</h1>
+<p>Stay up to date with the latest industry trends, tech tips, and stories from our learning community.</p>
+</div>
+
+</section>
+
+<section class="content container" id="blog-section">
+  <!-- Dynamic content will go here -->
+  <div id="blog-container">
+    <!-- Static Fallback List View (shows if CMS is not initialized or loading) -->
+    <div class="blog-grid">
+      <a href="blog.html?id=p1" class="blog-post-card">
+        <img src="https://images.unsplash.com/photo-1531497865144-0464ef8fb9a9?auto=format&fit=crop&w=700&q=80" alt="7 tech skills that will make you stand out in 2026">
+        <div class="meta">CAREER · 5 MIN READ</div>
+        <h3>7 tech skills that will make you stand out in 2026</h3>
+        <p>In 2026, the technology landscape is evolving faster than ever. To secure a premium job and stand out as a software engineer...</p>
+      </a>
+      
+      <a href="blog.html?id=p2" class="blog-post-card">
+        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=700&q=80" alt="From learner to team lead: Rafi's BITI journey">
+        <div class="meta">STUDENT STORIES · 4 MIN READ</div>
+        <h3>From learner to team lead: Rafi's BITI journey</h3>
+        <p>Rafi's journey is a proof of what project-based learning can accomplish. Starting with zero coding experience, Rafi enrolled...</p>
+      </a>
+      
+      <a href="blog.html?id=p3" class="blog-post-card">
+        <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=700&q=80" alt="Why building projects beats watching tutorials">
+        <div class="meta">LEARNING · 6 MIN READ</div>
+        <h3>Why building projects beats watching tutorials</h3>
+        <p>It is easy to fall into the 'tutorial hell' trap—spending hours watching video lectures and feeling productive, only to realize...</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+<div class="container">
+<img src="../IMAGES/BITI logo.png" alt="BITI">
+<span>© Bangladesh IT Institute</span>
+</div>
+
+</footer>
+
+<script src="cms.js"></script>
+<script>
+  // Mobile menu handler
+  document.querySelector('.menu').onclick=function(){
+    var n=document.querySelector('.nav-links');
+    n.classList.toggle('open');
+    this.innerHTML=n.classList.contains('open')?'✕':'☰';
+  };
+  
+  // Dynamic header adjust when viewing a single post
+  var params = new URLSearchParams(window.location.search);
+  if(params.get('id')){
+    var hero = document.getElementById('blog-hero');
+    if(hero) hero.style.display = 'none';
+  }
+</script>
+</body>
+</html>
